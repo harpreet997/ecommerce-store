@@ -14,7 +14,7 @@ const Cart = () => {
             <Sidebar />
             <div className="content" >
                 <header className="cart-header">
-                    <p className="fs-4 text-white">Cart Section </p>
+                    <p className="fs-5 fw-bold text-white">Cart Section </p>
                     <Link to="/dashboard"><button className="btn btn-primary">Back to Shopping</button></Link>
                 </header>
                 <table className="table table-striped">
