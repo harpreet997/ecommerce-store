@@ -23,6 +23,8 @@ const Sidebar = () => {
         <div className="sidebar">
             <NavLink className="fs-6 fw-bold" to="/dashboard"
             >Dashboard</NavLink>
+            <NavLink className="fs-6 fw-bold" to="/cart"
+            >Cart</NavLink>
             <div className='d-flex'>
             <p className='logout-button fs-6 fw-bold' style={{ marginLeft: 15, marginTop: 8,cursor: 'pointer' }} onClick={handleLogout}>Logout</p>
             <GrLogout className="logout-icon shopping-bag" style={{  marginTop: 10, marginLeft: 5, width: 20, height: 20, cursor: 'pointer' }} onClick={handleLogout} />
