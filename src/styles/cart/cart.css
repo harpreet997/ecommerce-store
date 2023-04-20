@@ -1,0 +1,31 @@
+.shopping-button{
+    width: 200px;
+    height:50px;
+    border-radius: 5px;
+    background-color: orange;
+}
+
+.center{
+    margin-top: 5px;
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    height:40px;
+    border-radius: 5px;
+    background-color: orange;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: aqua;
+    padding: 15px 15px
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
