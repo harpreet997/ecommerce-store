@@ -17,6 +17,7 @@ const Cart = () => {
                     <p className="fs-5 fw-bold text-white">Cart Section </p>
                     <Link to="/dashboard"><button className="btn btn-primary">Back to Shopping</button></Link>
                 </header>
+                <div className="card mt-5 mb-3">
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -41,12 +42,14 @@ const Cart = () => {
                             )
                         })}
                     </tbody>
-                    {cartdata.cartItems.length === 0 ?
+                </table>
+                {cartdata.cartItems.length === 0 ?
                         <div className='text-center'>
                             <img src={NoRecord} alt='NoRecord' className='w-10' />
                         </div>
                         : null}
-                </table>
+                </div>
+                
             </div>
         </>
     );
