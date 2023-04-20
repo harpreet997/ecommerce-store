@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from '../sidebar/Sidebar';
-import { getAllCategories, getProducts } from '../../getdata/getdata';
+import { getAllCategories, getProducts,getProductsAscending, getProductsDescending } from '../../getdata/getdata';
 import { Link } from "react-router-dom";
 import Pagination from '../pagination/Pagination';
 import NoRecord from '../../assets/NoRecord.png';
 import '../../styles/dashboard/dashboard.css';
 import { addToCart } from '../../redux/cart/cartSlice';
+import { BsSortAlphaDown, BsSortAlphaUpAlt } from 'react-icons/bs';
+
 
 const Dashboard = () => {
     const [categorydata, setCategorydata] = useState([]);
@@ -19,6 +21,7 @@ const Dashboard = () => {
     const nPages = Math.ceil(productlist.length / recordsPerPage)
     const quantity = useSelector((state) => state.cart.cartItems.length);
     const dispatch = useDispatch();
+    const [category, setCategory] = useState();
 
 
     useEffect(() => {
@@ -34,8 +37,30 @@ const Dashboard = () => {
 
     const handleCategorySelect = (event) => {
         const category = event.target.value;
-
+        setCategory(category)
         getProducts(category)
+            .then((response) => {
+                console.log(response.data);
+                setProductList(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const handleAscending = () => {
+        getProductsAscending(category)
+            .then((response) => {
+                console.log(response.data);
+                setProductList(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const handleDescending = () => {
+        getProductsDescending(category)
             .then((response) => {
                 console.log(response.data);
                 setProductList(response.data);
@@ -61,7 +86,12 @@ const Dashboard = () => {
                     </Link>
                 </nav>
                 <div className='row ms-1 mb-1' style={{ marginTop: 1 }}>
-                    <p className='fs-4'>Select Category</p>
+                    <div className="d-flex">
+                        <p className='fs-4'>Select Category</p>
+                        <BsSortAlphaDown style={{ marginLeft: 20, marginTop: 15 }} onClick={handleAscending} />
+                        <BsSortAlphaUpAlt style={{ marginLeft: 20, marginTop: 15 }} onClick={handleDescending} />
+                    </div>
+
                     <select className="w-100 mb-2 input" name="category" id="category"
                         onChange={handleCategorySelect} required>
                         <option value="">Select</option>

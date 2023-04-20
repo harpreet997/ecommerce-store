@@ -8,3 +8,11 @@ export const getAllCategories = () => {
 export const getProducts = (category) => {
     return axios.get(`${baseUrl}/products/category/${category}`)
 }
+
+export const getProductsAscending = (category) => {
+    return axios.get(`${baseUrl}/products/category/${category}?sort=asc`)
+}
+
+export const getProductsDescending = (category) => {
+    return axios.get(`${baseUrl}/products/category/${category}?sort=desc`)
+}
